@@ -24,9 +24,11 @@ class MainActivityViewModel @Inject constructor(private val repository: Reposito
             val result = repository.getFilmData<FilmDataModel>(key,page)
             if (result.success && result.data != null) {
                 _data.value = ApiState.Success(result.data)
+                //_data.emit(ApiState.Success(result.data))
             } else {
                 val model = ErrorModel(1, "Data is not Available!")
                 _data.value = ApiState.Error(model)
+               // _data.emit(ApiState.Error(model))
             }
         }
     }
